@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import {ref} from 'vue';
+import questionsJson from './../assets/questions.json';
 
-let dailyQuestion = 'Qual è stato il più grande obiettivo che hai raggiunto di recente?';
+type Questions = {
+  [month: string]: {
+    [day: number]: string;
+  };
+};
+
+const questions: Questions = questionsJson;
+const today = new Date();
+const month = today.toLocaleString('en', {month: 'long'});
+const day = today.getDate();
+const dailyQuestion = questions[month]?.[day] || 'No question for today.';
+
 const customDate = ref('');
-
 const handleSubmit = () => {
-
 };
 </script>
 
@@ -15,10 +25,10 @@ const handleSubmit = () => {
 
   <form @submit.prevent="handleSubmit">
     <div>
-      <label for="date">Choose a specific day: </label>
+      <label for="date">Scegli un giorno specifico: </label>
       <input type="date" id="date" v-model="customDate" required>
     </div>
-    <button type="submit">Load question</button>
+    <button type="submit">Carica la domanda</button>
   </form>
 </template>
 
