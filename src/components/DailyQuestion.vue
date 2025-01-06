@@ -10,9 +10,9 @@ type Questions = {
 
 const questions: Questions = questionsJson;
 const today = new Date();
-const month = today.toLocaleString('en', {month: 'long'});
-const day = today.getDate();
-const dailyQuestion = questions[month]?.[day] || 'No question for today.';
+let month = today.toLocaleString('en', {month: 'long'});
+let day = today.getDate();
+let dailyQuestion = questions[month]?.[day] || 'No question for today.';
 
 const customDate = ref('');
 const handleSubmit = () => {
@@ -21,7 +21,8 @@ const handleSubmit = () => {
 
 <template>
   <h1>365 questions</h1>
-  <h2> {{ dailyQuestion }}</h2>
+  <h2><i> {{ dailyQuestion }} </i></h2>
+  <br>
 
   <form @submit.prevent="handleSubmit">
     <div>
