@@ -10,15 +10,33 @@ type Questions = {
 
 const theme = inject('theme');
 
-let loadQuestion = (date: Date) => {
-  const month = date.toLocaleString('en', {month: 'long'});
-  const day = date.getDate();
 
-  return questions[month]?.[day] || 'No question for today.';
+let getMonth = (date: Date) => {
+  return date.toLocaleString('it', {month: 'long'});
+}
+
+const today = new Date();
+let month = ref(getMonth(today));
+let day = ref(today.getDate());
+
+let getIntros = () => [
+  'Preparati a rispondere! La domanda di oggi è:',
+  `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`,
+  `Eccola, la domanda del ${day.value} ${month.value}:`,
+];
+
+let intro = ref(getIntros()[0]);
+
+let loadQuestion = (date: Date) => {
+  month.value = getMonth(date);
+  day.value = date.getDate();
+  const intros = getIntros();
+  intro.value = date > today ? intros[1] : date < today ? intros[2] : intros[0];
+
+  return questions[month.value]?.[day.value] || 'No question for today.';
 }
 
 const questions: Questions = questionsJson;
-const today = new Date();
 let dailyQuestion = ref(loadQuestion(today));
 
 const customDate = ref<string | null>(null);
@@ -32,22 +50,32 @@ const handleSubmit = () => {
 
 <template>
   <h1>365 questions</h1>
-  <h2><i> {{ dailyQuestion }} </i></h2>
+  <p> {{ intro }}</p>
+  <h2><i><q>{{ dailyQuestion }} </q></i></h2>
   <br>
 
-  <form @submit.prevent="handleSubmit">
-    <div>
-      <label for="date">Scegli un giorno specifico: </label>
-      <input type="date" id="date" v-model="customDate" required>
-    </div>
-    <div class="button-row">
-      <button :class="['btn', theme]">Carica la domanda</button>
-      <button :class="['btn', theme]" type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
-    </div>
-  </form>
+  <div class="form-container">
+    <form @submit.prevent="handleSubmit">
+      <div>
+        <label for="date">Scegli un giorno specifico: </label>
+        <input type="date" id="date" v-model="customDate" required>
+      </div>
+      <div class="button-row">
+        <button :class="['btn', theme]">Carica la domanda</button>
+        <button :class="['btn', theme]" type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped>
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 20vh;
+}
+
 form {
   display: flex;
   flex-direction: column;
