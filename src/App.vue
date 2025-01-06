@@ -19,7 +19,7 @@ provide('theme', theme);
 <template>
   <div>
     <a href="https://github.com/rob93c" target="_blank">
-      <img :src="`/src/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
+      <img :src="`/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
     </a>
   </div>
   <DailyQuestion/>
