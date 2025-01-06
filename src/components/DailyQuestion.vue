@@ -8,14 +8,23 @@ type Questions = {
   };
 };
 
+let loadQuestion = (date: Date) => {
+  const month = date.toLocaleString('en', {month: 'long'});
+  const day = date.getDate();
+
+  return questions[month]?.[day] || 'No question for today.';
+}
+
 const questions: Questions = questionsJson;
 const today = new Date();
-let month = today.toLocaleString('en', {month: 'long'});
-let day = today.getDate();
-let dailyQuestion = questions[month]?.[day] || 'No question for today.';
+let dailyQuestion = ref(loadQuestion(today));
 
-const customDate = ref('');
+const customDate = ref<string | null>(null);
 const handleSubmit = () => {
+  if (customDate.value) {
+    const selectedDate = new Date(customDate.value);
+    dailyQuestion.value = loadQuestion(selectedDate);
+  }
 };
 </script>
 
@@ -29,7 +38,10 @@ const handleSubmit = () => {
       <label for="date">Scegli un giorno specifico: </label>
       <input type="date" id="date" v-model="customDate" required>
     </div>
-    <button type="submit">Carica la domanda</button>
+    <div class="button-row">
+      <button type="submit">Carica la domanda</button>
+      <button type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
+    </div>
   </form>
 </template>
 
@@ -38,6 +50,12 @@ form {
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 button {
