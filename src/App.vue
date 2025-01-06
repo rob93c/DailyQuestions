@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import {onMounted, ref} from 'vue';
+import {provide, onMounted, ref} from 'vue';
 import DailyQuestion from "./components/DailyQuestion.vue";
 
-const logo = ref('dark');
+const theme = ref('dark');
 
 onMounted(() => {
   const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  logo.value = isDarkTheme ? 'dark' : 'light';
+  theme.value = isDarkTheme ? 'dark' : 'light';
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    logo.value = e.matches ? 'dark' : 'light';
+    theme.value = e.matches ? 'dark' : 'light';
   });
 });
+
+provide('theme', theme);
 </script>
 
 <template>
   <div>
     <a href="https://github.com/rob93c" target="_blank">
-      <img :src="`/src/assets/${logo}-github.svg`" :class="['logo', 'github', logo]" alt="GitHub logo"/>
+      <img :src="`/src/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
     </a>
   </div>
   <DailyQuestion/>

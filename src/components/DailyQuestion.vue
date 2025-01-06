@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import {inject, ref} from 'vue';
 import questionsJson from './../assets/questions.json';
 
 type Questions = {
@@ -7,6 +7,8 @@ type Questions = {
     [day: number]: string;
   };
 };
+
+const theme = inject('theme');
 
 let loadQuestion = (date: Date) => {
   const month = date.toLocaleString('en', {month: 'long'});
@@ -39,8 +41,8 @@ const handleSubmit = () => {
       <input type="date" id="date" v-model="customDate" required>
     </div>
     <div class="button-row">
-      <button type="submit">Carica la domanda</button>
-      <button type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
+      <button :class="['btn', theme]">Carica la domanda</button>
+      <button :class="['btn', theme]" type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
     </div>
   </form>
 </template>
@@ -60,5 +62,17 @@ form {
 
 button {
   align-self: auto;
+}
+
+/*noinspection CssUnusedSymbol*/
+.btn.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+/*noinspection CssUnusedSymbol*/
+.btn.light {
+  background-color: #c9c9c9;
+  color: #333;
 }
 </style>
