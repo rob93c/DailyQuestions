@@ -17,17 +17,18 @@ provide('theme', theme);
 </script>
 
 <template>
+  <DailyQuestion/>
+  <br>
   <div>
     <a href="https://github.com/rob93c" target="_blank">
       <img :src="`/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
     </a>
   </div>
-  <DailyQuestion/>
 </template>
 
 <style scoped>
 .logo {
-  height: 6em;
+  height: 2em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
