@@ -22,7 +22,7 @@ let day = ref(today.getDate());
 let getIntros = () => [
   'Preparati a rispondere! La domanda di oggi è:',
   `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`,
-  `Eccola, la domanda del ${day.value} ${month.value}:`,
+  `La domanda del ${day.value} ${month.value} era:`,
 ];
 
 let intro = ref(getIntros()[0]);
