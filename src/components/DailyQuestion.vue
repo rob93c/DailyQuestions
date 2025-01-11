@@ -12,29 +12,32 @@ const theme = inject('theme');
 
 
 let getMonth = (date: Date) => {
-  return date.toLocaleString('it', {month: 'long'});
-}
+  return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
+};
 
 const today = new Date();
 let month = ref(getMonth(today));
 let day = ref(today.getDate());
 
-let getIntros = () => [
-  'Preparati a rispondere! La domanda di oggi è:',
-  `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`,
-  `La domanda del ${day.value} ${month.value} era:`,
-];
+let getIntro = (date: Date) => {
+  if (date > today) {
+    return `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`;
+  } else if (date < today) {
+    return `La domanda del ${day.value} ${month.value} era:`;
+  } else {
+    return 'Preparati a rispondere! La domanda di oggi è:';
+  }
+};
 
-let intro = ref(getIntros()[0]);
+let intro = ref(getIntro(today));
 
 let loadQuestion = (date: Date) => {
-  month.value = getMonth(date);
+  intro.value = getIntro(date);
   day.value = date.getDate();
-  const intros = getIntros();
-  intro.value = date > today ? intros[1] : date < today ? intros[2] : intros[0];
+  month.value = getMonth(date);
 
   return questions[month.value]?.[day.value] || 'No question for today.';
-}
+};
 
 const questions: Questions = questionsJson;
 let dailyQuestion = ref(loadQuestion(today));
