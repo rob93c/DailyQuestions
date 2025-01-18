@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 512 512"  xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#000000;}
-</style>
-<g>
-	<path class="st0" d="M306.068,156.129c-6.566-5.771-14.205-10.186-22.912-13.244c-8.715-3.051-17.82-4.58-27.326-4.58
-		c-9.961,0-19.236,1.59-27.834,4.752c-8.605,3.171-16.127,7.638-22.576,13.41c-6.449,5.772-11.539,12.9-15.272,21.384
-		c-3.736,8.486-5.604,17.937-5.604,28.34h44.131c0-7.915,2.258-14.593,6.785-20.028c4.524-5.426,11.314-8.138,20.369-8.138
-		c8.598,0,15.328,2.661,20.197,7.974c4.864,5.322,7.297,11.942,7.297,19.856c0,3.854-0.965,7.698-2.887,11.543
-		c-1.922,3.854-4.242,7.586-6.959,11.197l-21.26,27.232c-4.527,5.884-16.758,22.908-16.758,40.316v10.187h44.129v-7.128
-		c0-2.938,0.562-5.996,1.699-9.168c1.127-3.162,6.453-10.904,8.268-13.168l21.264-28.243c4.752-6.333,8.705-12.839,11.881-19.518
-		c3.166-6.67,4.752-14.308,4.752-22.913c0-10.86-1.926-20.478-5.772-28.85C317.832,168.969,312.627,161.892,306.068,156.129z"/>
-	<rect x="234.106" y="328.551" class="st0" width="46.842" height="45.144"/>
-	<path class="st0" d="M256,0C114.613,0,0,114.615,0,256s114.613,256,256,256c141.383,0,256-114.615,256-256S397.383,0,256,0z
-		 M256,448c-105.871,0-192-86.131-192-192S150.129,64,256,64c105.867,0,192,86.131,192,192S361.867,448,256,448z"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 219 238" xmlns:bx="https://boxy-svg.com">
+    <g transform="matrix(1, 0, 0, 1, -140.77000427246094, -121.0999984741211)">
+        <rect x="140.84" y="140.84" width="218.319" height="218.319" style="stroke: rgb(0, 0, 0); stroke-linejoin: round; fill: rgb(245, 245, 245); stroke-width: 0px;" rx="19.732" ry="19.732"/>
+        <g style="" transform="matrix(1, 0, 0, 0.803213, 0, 27.555902)">
+            <path style="stroke: rgb(0, 0, 0); fill: rgb(237, 69, 50); stroke-width: 0px;" d="M 160.68 140.029 H 339.285 A 19.909 19.909 0 0 1 359.194 159.938 V 207.045 H 140.77 V 159.939 A 19.91 19.91 0 0 1 160.68 140.029 Z" bx:shape="rect 140.77 140.029 218.424 67.016 19.91 19.909 0 0 1@68c4fe8f"/>
+            <rect x="140.783" y="206.616" width="218.404" height="7.496" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(185, 34, 27);"/>
+            <rect x="140.787" y="213.786" width="218.4" height="7.223" style="stroke: rgb(0, 0, 0); fill: rgb(221, 222, 221); stroke-width: 0px;"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -69.423409, -84.593193)">
+            <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
+            <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 69.352982, -84.601997)" style="transform-origin: -120.009px -0.843195px;">
+            <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
+            <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
+        </g>
+        <text style="fill: rgb(239, 61, 41); font-family: Roboto; font-size: 150px; white-space: pre;" x="214.586" y="330.728">?</text>
+    </g>
 </svg>
