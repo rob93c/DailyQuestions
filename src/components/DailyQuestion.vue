@@ -47,14 +47,25 @@ const handleSubmit = () => {
   if (customDate.value) {
     const selectedDate = new Date(customDate.value);
     dailyQuestion.value = loadQuestion(selectedDate);
+    totalDays.value = getDaysInYear(selectedDate)
   }
 };
+
+let getDaysInYear = (date: Date) => {
+  return isLeapYear(date) ? 366 : 365;
+};
+
+let isLeapYear = (date: Date) => {
+  return new Date(date.getFullYear(), 1, 29).getMonth() === 1;
+};
+
+let totalDays = ref(getDaysInYear(today));
 </script>
 
 <template>
-  <h1>365 questions</h1>
-  <p> {{ intro }}</p>
-  <h2><i><q>{{ dailyQuestion }} </q></i></h2>
+  <h1>{{ totalDays }} questions</h1>
+  <p>{{ intro }}</p>
+  <h2><i><q>{{ dailyQuestion }}</q></i></h2>
   <br>
 
   <div class="form-container">
@@ -65,7 +76,9 @@ const handleSubmit = () => {
       </div>
       <div class="button-row">
         <button :class="['btn', theme]">Carica la domanda</button>
-        <button :class="['btn', theme]" type="button" @click="dailyQuestion = loadQuestion(today)">Oggi</button>
+        <button :class="['btn', theme]" type="button"
+                @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today)">Oggi
+        </button>
       </div>
     </form>
   </div>
