@@ -15,7 +15,8 @@ let getMonth = (date: Date) => {
   return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
 };
 
-const today = new Date();
+let today = new Date();
+today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 let month = ref(getMonth(today));
 let day = ref(today.getDate());
 
@@ -32,9 +33,9 @@ let getIntro = (date: Date) => {
 let intro = ref(getIntro(today));
 
 let loadQuestion = (date: Date) => {
-  intro.value = getIntro(date);
   day.value = date.getDate();
   month.value = getMonth(date);
+  intro.value = getIntro(date);
 
   return questions[month.value]?.[day.value] || 'No question for today.';
 };
@@ -45,7 +46,8 @@ let dailyQuestion = ref(loadQuestion(today));
 const customDate = ref<string | null>(null);
 const handleSubmit = () => {
   if (customDate.value) {
-    const selectedDate = new Date(customDate.value);
+    let selectedDate = new Date(customDate.value);
+    selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
     dailyQuestion.value = loadQuestion(selectedDate);
     totalDays.value = getDaysInYear(selectedDate)
   }
