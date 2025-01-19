@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 219 238" xmlns:bx="https://boxy-svg.com">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218.319 238" xmlns:bx="https://boxy-svg.com">
     <g transform="matrix(1, 0, 0, 1, -140.77000427246094, -121.0999984741211)">
         <rect x="140.84" y="140.84" width="218.319" height="218.319" style="stroke: rgb(0, 0, 0); stroke-linejoin: round; fill: rgb(245, 245, 245); stroke-width: 0px;" rx="19.732" ry="19.732"/>
         <g style="" transform="matrix(1, 0, 0, 0.803213, 0, 27.555902)">
             <path style="stroke: rgb(0, 0, 0); fill: rgb(237, 69, 50); stroke-width: 0px;" d="M 160.68 140.029 H 339.285 A 19.909 19.909 0 0 1 359.194 159.938 V 207.045 H 140.77 V 159.939 A 19.91 19.91 0 0 1 160.68 140.029 Z" bx:shape="rect 140.77 140.029 218.424 67.016 19.91 19.909 0 0 1@68c4fe8f"/>
-            <rect x="140.783" y="206.616" width="218.404" height="7.496" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(185, 34, 27);"/>
-            <rect x="140.787" y="213.786" width="218.4" height="7.223" style="stroke: rgb(0, 0, 0); fill: rgb(221, 222, 221); stroke-width: 0px;"/>
+            <rect x="140.783" y="206.616" width="218.319" height="7.496" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(185, 34, 27);"/>
+            <rect x="140.787" y="213.786" width="218.319" height="7.223" style="stroke: rgb(0, 0, 0); fill: rgb(221, 222, 221); stroke-width: 0px;"/>
         </g>
         <g transform="matrix(1, 0, 0, 1, -69.423409, -84.593193)">
             <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
