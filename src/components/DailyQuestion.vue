@@ -17,8 +17,9 @@ let getMonth = (date: Date) => {
 
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-let month = ref(getMonth(today));
 let day = ref(today.getDate());
+let month = ref(getMonth(today));
+const yesterday = new Date(new Date().setDate(day.value - 1));
 
 let getIntro = (date: Date) => {
   if (date > today) {
@@ -44,7 +45,7 @@ const questions: Questions = questionsJson;
 let dailyQuestion = ref(loadQuestion(today));
 
 const customDate = ref<string | null>(null);
-const handleSubmit = () => {
+const handleChange = () => {
   if (customDate.value) {
     let selectedDate = new Date(customDate.value);
     selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
@@ -71,13 +72,15 @@ let totalDays = ref(getDaysInYear(today));
   <br>
 
   <div class="form-container">
-    <form @submit.prevent="handleSubmit">
+    <form @change="handleChange">
       <div>
         <label for="date">Scegli un giorno specifico: </label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
       <div class="button-row">
-        <button :class="['btn', theme]">Carica la domanda</button>
+        <button :class="['btn', theme]" type="button"
+                @click="dailyQuestion = loadQuestion(yesterday); totalDays = getDaysInYear(yesterday)">Ieri
+        </button>
         <button :class="['btn', theme]" type="button"
                 @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today)">Oggi
         </button>
