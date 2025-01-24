@@ -79,10 +79,10 @@ let totalDays = ref(getDaysInYear(today));
       </div>
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="dailyQuestion = loadQuestion(yesterday); totalDays = getDaysInYear(yesterday)">Ieri
+                @click="dailyQuestion = loadQuestion(yesterday); totalDays = getDaysInYear(yesterday); customDate = null">Ieri
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today)">Oggi
+                @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today); customDate = null">Oggi
         </button>
       </div>
     </form>
