@@ -1,0 +1,22 @@
+{
+    "name": "Daily Questions",
+    "short_name": "Daily Questions",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/daily-questions.svg",
+            "sizes": "150x150",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/assets/daily-questions-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "description": "Answer daily questions to keep track of your year.",
+    "theme_color": "#fff",
+    "background_color": "#333"
+}

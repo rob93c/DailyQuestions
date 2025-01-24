@@ -10,8 +10,7 @@ type Questions = {
 
 const theme = inject('theme');
 
-
-let getMonth = (date: Date) => {
+const getMonth = (date: Date) => {
   return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
 };
 
@@ -21,7 +20,7 @@ let day = ref(today.getDate());
 let month = ref(getMonth(today));
 const yesterday = new Date(new Date().setDate(day.value - 1));
 
-let getIntro = (date: Date) => {
+const getIntro = (date: Date) => {
   if (date > today) {
     return `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`;
   } else if (date < today) {
@@ -33,7 +32,7 @@ let getIntro = (date: Date) => {
 
 let intro = ref(getIntro(today));
 
-let loadQuestion = (date: Date) => {
+const loadQuestion = (date: Date) => {
   day.value = date.getDate();
   month.value = getMonth(date);
   intro.value = getIntro(date);
@@ -54,15 +53,21 @@ const handleChange = () => {
   }
 };
 
-let getDaysInYear = (date: Date) => {
+const getDaysInYear = (date: Date) => {
   return isLeapYear(date) ? 366 : 365;
 };
 
-let isLeapYear = (date: Date) => {
+const isLeapYear = (date: Date) => {
   return new Date(date.getFullYear(), 1, 29).getMonth() === 1;
 };
 
 let totalDays = ref(getDaysInYear(today));
+
+const refreshContent = (date: Date) => {
+  dailyQuestion.value = loadQuestion(date);
+  totalDays.value = getDaysInYear(date);
+  customDate.value = null
+};
 </script>
 
 <template>
@@ -79,10 +84,10 @@ let totalDays = ref(getDaysInYear(today));
       </div>
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="dailyQuestion = loadQuestion(yesterday); totalDays = getDaysInYear(yesterday)">Ieri
+                @click="refreshContent(yesterday)">Ieri
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today)">Oggi
+                @click="refreshContent(today)">Oggi
         </button>
       </div>
     </form>
