@@ -10,7 +10,7 @@ type Questions = {
 };
 
 const theme = inject('theme');
-const {t} = useI18n();
+const {t, d} = useI18n();
 
 const getMonth = (date: Date) => {
   return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
@@ -24,9 +24,9 @@ const yesterday = new Date(new Date().setDate(day.value - 1));
 
 const getIntro = (date: Date) => {
   if (date > today) {
-    return t('message.futureQuestion', {day: day.value, month: month.value});
+    return t('message.futureQuestion', {date: d(date, 'long')});
   } else if (date < today) {
-    return t('message.pastQuestion', {day: day.value, month: month.value});
+    return t('message.pastQuestion', {date: d(date, 'long')});
   } else {
     return t('message.todayQuestion');
   }
