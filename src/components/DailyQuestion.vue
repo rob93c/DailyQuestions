@@ -1,26 +1,13 @@
 <script setup lang="ts">
 import {inject, ref} from 'vue';
 import {useI18n} from 'vue-i18n';
-import questionsJson from './../assets/questions.json';
-
-type Questions = {
-  [month: string]: {
-    [day: number]: string;
-  };
-};
 
 const theme = inject('theme');
 const {t, d} = useI18n();
 
-const getMonth = (date: Date) => {
-  return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
-};
-
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-let day = ref(today.getDate());
-let month = ref(getMonth(today));
-const yesterday = new Date(new Date().setDate(day.value - 1));
+const yesterday = new Date(new Date().setDate(today.getDate() - 1));
 
 const getIntro = (date: Date) => {
   if (date > today) {
@@ -35,14 +22,11 @@ const getIntro = (date: Date) => {
 let intro = ref(getIntro(today));
 
 const loadQuestion = (date: Date) => {
-  day.value = date.getDate();
-  month.value = getMonth(date);
   intro.value = getIntro(date);
 
-  return questions[month.value]?.[day.value] || t('message.noQuestions');
+  return t(`message.questions.${date.getMonth()}.${date.getDate()}`);
 };
 
-const questions: Questions = questionsJson;
 let dailyQuestion = ref(loadQuestion(today));
 
 const customDate = ref<string | null>(null);
