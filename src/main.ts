@@ -11,15 +11,19 @@ const i18n = createI18n({
         en: {
             message: {
                 today: 'Today',
-                futureQuestion: 'Can\'t wait? You are taking a peek at {day} {month}\'s question',
-                pastQuestion: 'The question on {day} {month} was:',
+                yesterday: 'Yesterday',
+                specificDate: 'Choose a specific date: ',
+                futureQuestion: 'Can\'t wait? You are peeking at the question for {day} {month}:',
+                pastQuestion: 'The question for {day} {month} was:',
                 todayQuestion: 'Buckle up! Today\'s question is:',
-                noQuestions: 'No question for today.'
+                noQuestions: 'There are no questions today.'
             }
         },
         it: {
             message: {
                 today: 'Oggi',
+                yesterday: 'Ieri',
+                specificDate: 'Scegli un giorno specifico: ',
                 futureQuestion: 'Impaziente? Stai sbirciando la domanda del {day} {month}:',
                 pastQuestion: 'La domanda del {day} {month} era:',
                 todayQuestion: 'Preparati a rispondere! La domanda di oggi è:',

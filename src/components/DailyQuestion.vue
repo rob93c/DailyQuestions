@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {inject, ref} from 'vue';
+import {useI18n} from 'vue-i18n';
 import questionsJson from './../assets/questions.json';
 
 type Questions = {
@@ -9,6 +10,7 @@ type Questions = {
 };
 
 const theme = inject('theme');
+const {t} = useI18n();
 
 const getMonth = (date: Date) => {
   return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
@@ -22,11 +24,11 @@ const yesterday = new Date(new Date().setDate(day.value - 1));
 
 const getIntro = (date: Date) => {
   if (date > today) {
-    return `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`;
+    return t('message.futureQuestion', {day: day.value, month: month.value});
   } else if (date < today) {
-    return `La domanda del ${day.value} ${month.value} era:`;
+    return t('message.pastQuestion', {day: day.value, month: month.value});
   } else {
-    return 'Preparati a rispondere! La domanda di oggi è:';
+    return t('message.todayQuestion');
   }
 };
 
@@ -37,7 +39,7 @@ const loadQuestion = (date: Date) => {
   month.value = getMonth(date);
   intro.value = getIntro(date);
 
-  return questions[month.value]?.[day.value] || 'No question for today.';
+  return questions[month.value]?.[day.value] || t('message.noQuestions');
 };
 
 const questions: Questions = questionsJson;
@@ -79,15 +81,15 @@ const refreshContent = (date: Date) => {
   <div class="form-container">
     <form @change="handleChange">
       <div>
-        <label for="date">Scegli un giorno specifico: </label>
+        <label for="date">{{ $t('message.specificDate') }}</label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">Ieri
+                @click="refreshContent(yesterday)">{{ $t('message.yesterday') }}
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(today)">Oggi
+                @click="refreshContent(today)">{{ $t('message.today') }}
         </button>
       </div>
     </form>
