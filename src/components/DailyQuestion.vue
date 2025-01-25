@@ -121,12 +121,12 @@ button {
 /*noinspection CssUnusedSymbol*/
 .btn.dark {
   background-color: #333;
-  color: #fff;
+  color: #ffffff;
 }
 
 /*noinspection CssUnusedSymbol*/
 .btn.light {
   background-color: #c9c9c9;
-  color: #333;
+  color: #000000;
 }
 </style>
