@@ -1,4 +1,4 @@
-# <img src="public/daily-questions.svg" alt="Daily questions Logo" align="right" width="100">Daily questions
+# <img src="public/daily-questions.svg" alt="Daily questions Logo" align="right" width="100">[Daily questions](https://daily-questions.up.railway.app/)
 
 Answer daily questions to keep track of your life.
 
