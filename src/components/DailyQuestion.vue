@@ -10,17 +10,17 @@ type Questions = {
 
 const theme = inject('theme');
 
-
-let getMonth = (date: Date) => {
+const getMonth = (date: Date) => {
   return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
 };
 
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-let month = ref(getMonth(today));
 let day = ref(today.getDate());
+let month = ref(getMonth(today));
+const yesterday = new Date(new Date().setDate(day.value - 1));
 
-let getIntro = (date: Date) => {
+const getIntro = (date: Date) => {
   if (date > today) {
     return `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`;
   } else if (date < today) {
@@ -32,7 +32,7 @@ let getIntro = (date: Date) => {
 
 let intro = ref(getIntro(today));
 
-let loadQuestion = (date: Date) => {
+const loadQuestion = (date: Date) => {
   day.value = date.getDate();
   month.value = getMonth(date);
   intro.value = getIntro(date);
@@ -44,7 +44,7 @@ const questions: Questions = questionsJson;
 let dailyQuestion = ref(loadQuestion(today));
 
 const customDate = ref<string | null>(null);
-const handleSubmit = () => {
+const handleChange = () => {
   if (customDate.value) {
     let selectedDate = new Date(customDate.value);
     selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
@@ -53,15 +53,21 @@ const handleSubmit = () => {
   }
 };
 
-let getDaysInYear = (date: Date) => {
+const getDaysInYear = (date: Date) => {
   return isLeapYear(date) ? 366 : 365;
 };
 
-let isLeapYear = (date: Date) => {
+const isLeapYear = (date: Date) => {
   return new Date(date.getFullYear(), 1, 29).getMonth() === 1;
 };
 
 let totalDays = ref(getDaysInYear(today));
+
+const refreshContent = (date: Date) => {
+  dailyQuestion.value = loadQuestion(date);
+  totalDays.value = getDaysInYear(date);
+  customDate.value = null
+};
 </script>
 
 <template>
@@ -71,15 +77,17 @@ let totalDays = ref(getDaysInYear(today));
   <br>
 
   <div class="form-container">
-    <form @submit.prevent="handleSubmit">
+    <form @change="handleChange">
       <div>
         <label for="date">Scegli un giorno specifico: </label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
       <div class="button-row">
-        <button :class="['btn', theme]">Carica la domanda</button>
         <button :class="['btn', theme]" type="button"
-                @click="dailyQuestion = loadQuestion(today); totalDays = getDaysInYear(today)">Oggi
+                @click="refreshContent(yesterday)">Ieri
+        </button>
+        <button :class="['btn', theme]" type="button"
+                @click="refreshContent(today)">Oggi
         </button>
       </div>
     </form>
@@ -113,12 +121,12 @@ button {
 /*noinspection CssUnusedSymbol*/
 .btn.dark {
   background-color: #333;
-  color: #fff;
+  color: #ffffff;
 }
 
 /*noinspection CssUnusedSymbol*/
 .btn.light {
   background-color: #c9c9c9;
-  color: #333;
+  color: #000000;
 }
 </style>
