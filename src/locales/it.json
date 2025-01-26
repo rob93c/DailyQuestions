@@ -5,6 +5,10 @@
     "futureQuestion": "Impaziente? Stai sbirciando la domanda del {date}:",
     "pastQuestion": "La domanda del {date} era:",
     "todayQuestion": "Preparati a rispondere! La domanda di oggi è:",
+    "localeNames": {
+        "en": "Inglese",
+        "it": "Italiano"
+    },
     "questions": {
         "0": {
             "1": "Qual è il tuo obiettivo principale dell’anno?",

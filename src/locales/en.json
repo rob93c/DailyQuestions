@@ -5,6 +5,10 @@
     "futureQuestion": "Can't wait? You are peeking at the question for {date}:",
     "pastQuestion": "The question for {date} was:",
     "todayQuestion": "Buckle up! Today's question is:",
+    "localeNames": {
+        "en": "English",
+        "it": "Italian"
+    },
     "questions": {
         "0": {
             "1": "What is your main goal for the year?",
