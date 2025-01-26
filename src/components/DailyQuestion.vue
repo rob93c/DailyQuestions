@@ -28,14 +28,15 @@ const loadQuestion = (date: Date) => {
 };
 
 let dailyQuestion = ref(loadQuestion(today));
+let customDate = ref<string | null>(null);
+let selectedDate = ref(today);
 
-const customDate = ref<string | null>(null);
 const handleChange = () => {
   if (customDate.value) {
-    let selectedDate = new Date(customDate.value);
-    selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-    dailyQuestion.value = loadQuestion(selectedDate);
-    totalDays.value = getDaysInYear(selectedDate)
+    const tempDate = new Date(customDate.value);
+    selectedDate.value = new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate());
+    dailyQuestion.value = loadQuestion(tempDate);
+    totalDays.value = getDaysInYear(tempDate)
   }
 };
 
@@ -52,12 +53,13 @@ let totalDays = ref(getDaysInYear(today));
 const refreshContent = (date: Date) => {
   dailyQuestion.value = loadQuestion(date);
   totalDays.value = getDaysInYear(date);
+  selectedDate.value = date;
   customDate.value = null
 };
 
 watch(locale, () => {
-  intro.value = getIntro(today);
-  dailyQuestion.value = loadQuestion(today);
+  intro.value = getIntro(selectedDate.value);
+  dailyQuestion.value = loadQuestion(selectedDate.value);
 });
 </script>
 
