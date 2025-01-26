@@ -14,6 +14,11 @@ onMounted(() => {
 });
 
 provide('theme', theme);
+
+const localeNames = {
+  "en": "English",
+  "it": "Italiano"
+};
 </script>
 
 <template>
@@ -28,9 +33,9 @@ provide('theme', theme);
   </div>
 
   <div class="locale-changer">
-    <select v-model="$i18n.locale">
+    <select v-model="$i18n.locale" name="locale-selector">
       <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
-        {{ $t(`message.localeNames.${locale}`) }}
+        {{ localeNames[locale as keyof typeof localeNames] }}
       </option>
     </select>
   </div>
