@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" viewBox="-10 0 238 238">
-  <g transform="matrix(1, 0, 0, 1, -140.77000427246094, -121.0999984741211)">
-    <rect x="140.84" y="140.84" width="218.319" height="218.319" style="stroke: rgb(0, 0, 0); stroke-linejoin: round; fill: rgb(245, 245, 245); stroke-width: 0px;" rx="19.732" ry="19.732"/>
-    <g style="" transform="matrix(1, 0, 0, 0.803213, 0, 27.555902)">
-      <path style="stroke: rgb(0, 0, 0); fill: rgb(237, 69, 50); stroke-width: 0px;" d="M 160.68 140.029 H 339.285 A 19.909 19.909 0 0 1 359.194 159.938 V 207.045 H 140.77 V 159.939 A 19.91 19.91 0 0 1 160.68 140.029 Z" bx:shape="rect 140.77 140.029 218.424 67.016 19.91 19.909 0 0 1@68c4fe8f"/>
-      <rect x="140.783" y="206.616" width="218.319" height="7.496" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(185, 34, 27);"/>
-      <rect x="140.787" y="213.786" width="218.319" height="7.223" style="stroke: rgb(0, 0, 0); fill: rgb(221, 222, 221); stroke-width: 0px;"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" viewBox="-10 0 280 280">
+    <g transform="matrix(0.998059, 0, 0, 0.998059, -130.496796, -115.25647)" style="">
+        <title>full calendar</title>
+        <g style="" transform="matrix(1, 0, 0, 1, 11.021392, 1.556886)">
+            <title>calendar</title>
+            <g transform="matrix(1, 0, 0, 1, 0, 4.954987)">
+                <title>blank calendar</title>
+                <rect x="140.823" y="140.837" width="218.319" height="217.616" style="stroke: rgb(0, 0, 0); stroke-linejoin: round; fill: rgb(245, 245, 245); stroke-width: 0px;" rx="19.732" ry="19.732">
+                    <title>background</title>
+                </rect>
+                <g style="" transform="matrix(1, 0, 0, 0.800625, 0, 27.918283)">
+                    <title>top calendar</title>
+                    <path style="stroke: rgb(0, 0, 0); fill: rgb(237, 69, 50); stroke-width: 0px;" d="M 160.68 140.029 H 339.285 A 19.909 19.909 0 0 1 359.194 159.938 V 207.045 H 140.77 V 159.939 A 19.91 19.91 0 0 1 160.68 140.029 Z" bx:shape="rect 140.77 140.029 218.424 67.016 19.91 19.909 0 0 1@68c4fe8f"/>
+                    <rect x="140.783" y="206.616" width="218.319" height="7.496" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(185, 34, 27);"/>
+                    <rect x="140.787" y="213.786" width="218.319" height="7.223" style="stroke: rgb(0, 0, 0); fill: rgb(221, 222, 221); stroke-width: 0px;"/>
+                </g>
+            </g>
+            <text style="fill: rgb(239, 61, 41); font-family: Roboto; font-size: 150px; white-space: pre;" x="214.569" y="339.964"><title>question mark</title>?</text>
+        </g>
+        <g style="pointer-events: none;" transform="matrix(1, 0, 0, 1, 11.038611, 3.398118)">
+            <title>pins</title>
+            <g transform="matrix(1, 0, 0, 1, -69.423409, -84.593193)" style="">
+                <title>left pin</title>
+                <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
+                <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 69.352982, -84.601997)" style="transform-origin: -120.009px -0.843195px;">
+                <title>right pin</title>
+                <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
+                <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
+            </g>
+        </g>
     </g>
-    <g transform="matrix(1, 0, 0, 1, -69.423409, -84.593193)">
-      <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
-      <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
-    </g>
-    <g transform="matrix(1, 0, 0, 1, 69.352982, -84.601997)" style="transform-origin: -120.009px -0.843195px;">
-      <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 0px; stroke-linejoin: round; fill: rgb(163, 18, 13);" cx="250" cy="250" rx="11.109" ry="11.109"/>
-      <rect x="241.529" y="205.702" width="16.942" height="49.755" style="stroke: rgb(0, 0, 0); fill: rgb(68, 80, 94); stroke-linejoin: round; stroke-width: 0px;" rx="8.471" ry="8.471"/>
-    </g>
-    <text style="fill: rgb(239, 61, 41); font-family: Roboto; font-size: 150px; white-space: pre;" x="214.586" y="330.728">?</text>
-  </g>
-  <defs>
-    <style bx:fonts="Roboto" bx:pinned="true">@import url(https://fonts.googleapis.com/css2?family=Roboto%3Aital%2Cwght%400%2C100%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C700%3B0%2C900%3B1%2C100%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C700%3B1%2C900&amp;display=swap);</style>
-  </defs>
+    <defs>
+        <style bx:fonts="Roboto" bx:pinned="true">@import url(https://fonts.googleapis.com/css2?family=Roboto%3Aital%2Cwght%400%2C100%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C700%3B0%2C900%3B1%2C100%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C700%3B1%2C900&amp;display=swap);</style>
+    </defs>
 </svg>

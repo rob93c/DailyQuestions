@@ -14,15 +14,30 @@ onMounted(() => {
 });
 
 provide('theme', theme);
+
+const localeNames = {
+  "en": "English",
+  "it": "Italiano"
+};
 </script>
 
 <template>
-  <DailyQuestion/>
-  <br>
-  <div>
-    <a href="https://github.com/rob93c" target="_blank">
+  <div class="app-container">
+    <DailyQuestion/>
+  </div>
+
+  <div class="logos">
+    <a href="https://github.com/rob93c/DailyQuestions" target="_blank">
       <img :src="`/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
     </a>
+  </div>
+
+  <div class="locale-changer">
+    <select v-model="$i18n.locale" name="locale-selector">
+      <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
+        {{ localeNames[locale as keyof typeof localeNames] }}
+      </option>
+    </select>
   </div>
 </template>
 

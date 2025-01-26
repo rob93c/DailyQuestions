@@ -1,55 +1,42 @@
 <script setup lang="ts">
-import {inject, ref} from 'vue';
-import questionsJson from './../assets/questions.json';
-
-type Questions = {
-  [month: string]: {
-    [day: number]: string;
-  };
-};
+import {inject, ref, watch} from 'vue';
+import {useI18n} from 'vue-i18n';
 
 const theme = inject('theme');
-
-const getMonth = (date: Date) => {
-  return new Intl.DateTimeFormat('it-IT', {month: 'long'}).format(date);
-};
+const {t, d, locale} = useI18n();
 
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-let day = ref(today.getDate());
-let month = ref(getMonth(today));
-const yesterday = new Date(new Date().setDate(day.value - 1));
+const yesterday = new Date(new Date().setDate(today.getDate() - 1));
 
 const getIntro = (date: Date) => {
   if (date > today) {
-    return `Impaziente? Stai sbirciando la domanda del ${day.value} ${month.value}:`;
+    return t('message.futureQuestion', {date: d(date, 'long')});
   } else if (date < today) {
-    return `La domanda del ${day.value} ${month.value} era:`;
+    return t('message.pastQuestion', {date: d(date, 'long')});
   } else {
-    return 'Preparati a rispondere! La domanda di oggi è:';
+    return t('message.todayQuestion');
   }
 };
 
 let intro = ref(getIntro(today));
 
 const loadQuestion = (date: Date) => {
-  day.value = date.getDate();
-  month.value = getMonth(date);
   intro.value = getIntro(date);
 
-  return questions[month.value]?.[day.value] || 'No question for today.';
+  return t(`message.questions.${date.getMonth()}.${date.getDate()}`);
 };
 
-const questions: Questions = questionsJson;
 let dailyQuestion = ref(loadQuestion(today));
+let customDate = ref<string | null>(null);
+let selectedDate = ref(today);
 
-const customDate = ref<string | null>(null);
 const handleChange = () => {
   if (customDate.value) {
-    let selectedDate = new Date(customDate.value);
-    selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-    dailyQuestion.value = loadQuestion(selectedDate);
-    totalDays.value = getDaysInYear(selectedDate)
+    const tempDate = new Date(customDate.value);
+    selectedDate.value = new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate());
+    dailyQuestion.value = loadQuestion(tempDate);
+    totalDays.value = getDaysInYear(tempDate)
   }
 };
 
@@ -66,28 +53,37 @@ let totalDays = ref(getDaysInYear(today));
 const refreshContent = (date: Date) => {
   dailyQuestion.value = loadQuestion(date);
   totalDays.value = getDaysInYear(date);
+  selectedDate.value = date;
   customDate.value = null
 };
+
+watch(locale, () => {
+  dailyQuestion.value = loadQuestion(selectedDate.value);
+});
 </script>
 
 <template>
   <h1>{{ totalDays }} questions</h1>
-  <p>{{ intro }}</p>
-  <h2><i><q>{{ dailyQuestion }}</q></i></h2>
-  <br>
+
+  <div class="question">
+    <p>{{ intro }}</p>
+    <h2><i><q>{{ dailyQuestion }}</q></i></h2>
+    <br>
+  </div>
 
   <div class="form-container">
     <form @change="handleChange">
-      <div>
-        <label for="date">Scegli un giorno specifico: </label>
+      <div class="date-selector">
+        <label for="date">{{ $t('message.specificDate') }}</label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
+
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">Ieri
+                @click="refreshContent(yesterday)">{{ $t('message.yesterday') }}
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(today)">Oggi
+                @click="refreshContent(today)">{{ $t('message.today') }}
         </button>
       </div>
     </form>
