@@ -341,7 +341,7 @@
             "7": "Elenca 5 cose che avresti voluto avere con te oggi.",
             "8": "Quali sono le conquiste personali delle quali sei più orgoglioso?",
             "9": "Quali accessori hai indossato oggi?",
-            "10": "Cosa ti ha sconvolto?",
+            "10": "Quale canzone descriverebbe al meglio il tuo stato d'animo oggi?",
             "11": "Qual è stata l’ultima bugia che hai raccontato?",
             "12": "Qual è la tua cucina preferita?",
             "13": "Di cosa hai ‘troppo’?",
@@ -354,7 +354,7 @@
             "20": "Che impressione hai fatto sugli altri oggi?",
             "21": "Cosa hai lasciato perdere oggi?",
             "22": "Come ti sei comportato oggi?",
-            "23": "Come lo sai?",
+            "23": "Hai offerto il tuo aiuto a qualcuno oggi?",
             "24": "Elenca le ultime 3 cose che hai utilizzato oggi.",
             "25": "Quale suono o rumore non sopporti?",
             "26": "Ti senti apprezzato?",
@@ -364,7 +364,7 @@
             "30": "Cosa hai dovuto fare oggi?"
         },
         "11": {
-            "1": "Chi è il tuo migliore amico?",
+            "1": "Se il tempo non fosse un problema, cosa faresti?",
             "2": "Vorrei davvero ______________.",
             "3": "C'è stato un momento in cui ti sei sentito particolarmente connesso con qualcuno?",
             "4": "Quale ricordo vuoi conservare di oggi?",
