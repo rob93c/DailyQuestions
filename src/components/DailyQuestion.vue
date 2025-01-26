@@ -58,7 +58,6 @@ const refreshContent = (date: Date) => {
 };
 
 watch(locale, () => {
-  intro.value = getIntro(selectedDate.value);
   dailyQuestion.value = loadQuestion(selectedDate.value);
 });
 </script>

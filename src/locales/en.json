@@ -4,7 +4,7 @@
     "specificDate": "Choose a specific date: ",
     "futureQuestion": "Can't wait? You are peeking at the question for {date}:",
     "pastQuestion": "The question for {date} was:",
-    "todayQuestion": "Buckle up! Today's question is:",
+    "todayQuestion": "Get ready! Today's question is:",
     "questions": {
         "0": {
             "1": "What is your main goal for the year?",
@@ -294,7 +294,7 @@
             "25": "Were you in control of the situations today?",
             "26": "What made this day fruitful?",
             "27": "Were you able to listen today?",
-            "28": "Never ______________ ______________.",
+            "28": "Never ______________.",
             "29": "Did you break the law? How?",
             "30": "Were you bored today?"
         },
