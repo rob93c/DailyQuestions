@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {inject, ref} from 'vue';
+import {inject, ref, watch} from 'vue';
 import {useI18n} from 'vue-i18n';
 
 const theme = inject('theme');
-const {t, d} = useI18n();
+const {t, d, locale} = useI18n();
 
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -54,20 +54,29 @@ const refreshContent = (date: Date) => {
   totalDays.value = getDaysInYear(date);
   customDate.value = null
 };
+
+watch(locale, () => {
+  intro.value = getIntro(today);
+  dailyQuestion.value = loadQuestion(today);
+});
 </script>
 
 <template>
   <h1>{{ totalDays }} questions</h1>
-  <p>{{ intro }}</p>
-  <h2><i><q>{{ dailyQuestion }}</q></i></h2>
-  <br>
+
+  <div class="question">
+    <p>{{ intro }}</p>
+    <h2><i><q>{{ dailyQuestion }}</q></i></h2>
+    <br>
+  </div>
 
   <div class="form-container">
     <form @change="handleChange">
-      <div>
+      <div class="date-selector">
         <label for="date">{{ $t('message.specificDate') }}</label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
+
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
                 @click="refreshContent(yesterday)">{{ $t('message.yesterday') }}

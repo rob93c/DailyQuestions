@@ -17,13 +17,16 @@ provide('theme', theme);
 </script>
 
 <template>
-  <DailyQuestion/>
-  <br>
-  <div>
+  <div class="app-container">
+    <DailyQuestion/>
+  </div>
+
+  <div class="logos">
     <a href="https://github.com/rob93c" target="_blank">
       <img :src="`/assets/${theme}-github.svg`" :class="['logo', 'github', theme]" alt="GitHub logo"/>
     </a>
   </div>
+
   <div class="locale-changer">
     <select v-model="$i18n.locale">
       <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
