@@ -33,9 +33,9 @@ const localeNames = {
   </div>
 
   <div class="locale-changer">
-    <select v-model="$i18n.locale" name="locale-selector">
+    <select v-model="$i18n.locale" id="locale-selector" name="locale-selector">
       <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
-        {{ localeNames[locale as keyof typeof localeNames] }}
+        {{ localeNames[locale.substring(0, 2) as keyof typeof localeNames] }}
       </option>
     </select>
   </div>
