@@ -7,7 +7,7 @@ import it_translations from './locales/it.json'
 
 const i18n = createI18n({
     legacy: false,
-    locale: navigator.language,
+    locale: navigator.language.substring(0, 2),
     fallbackLocale: 'en',
     messages: {
         en: {
