@@ -6,10 +6,9 @@ import en_translations from './locales/en.json'
 import it_translations from './locales/it.json'
 
 const supportedLocales = ['en', 'it'];
-let userLocales = [...new Set(navigator.languages
+let locale = navigator.languages
     .map(lang => new Intl.Locale(lang).language)
-    .filter(locale => supportedLocales.includes(locale)))];
-let locale = userLocales.length > 0 ? userLocales[0] : 'en';
+    .find(locale => supportedLocales.includes(locale)) || 'en';
 
 const i18n = createI18n({
     legacy: false,
