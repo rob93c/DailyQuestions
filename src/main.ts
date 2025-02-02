@@ -5,9 +5,14 @@ import App from './App.vue'
 import en_translations from './locales/en.json'
 import it_translations from './locales/it.json'
 
+const supportedLocales = ['en', 'it'];
+let locale = navigator.languages
+    .map(lang => new Intl.Locale(lang).language)
+    .find(locale => supportedLocales.includes(locale)) || 'en';
+
 const i18n = createI18n({
     legacy: false,
-    locale: navigator.language,
+    locale: locale,
     fallbackLocale: 'en',
     messages: {
         en: {
