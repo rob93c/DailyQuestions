@@ -15,7 +15,11 @@ onMounted(() => {
 
 provide('theme', theme);
 
-const localeNames = {
+type Locales = {
+  [locale: string]: string
+};
+
+const localeNames: Locales = {
   "en": "English",
   "it": "Italiano"
 };
@@ -33,9 +37,10 @@ const localeNames = {
   </div>
 
   <div class="locale-changer">
+    <label for="locale-selector">{{ $t('message.language') }}: </label>
     <select v-model="$i18n.locale" id="locale-selector" name="locale-selector">
       <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
-        {{ localeNames[locale.substring(0, 2) as keyof typeof localeNames] }}
+        {{ localeNames[locale] }}
       </option>
     </select>
   </div>
