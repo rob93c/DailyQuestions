@@ -52,8 +52,10 @@ button {
     transition: border-color 0.25s;
 }
 
-button:hover {
-    border-color: #646cff;
+button:hover,
+.date-selector input[type="date"]:hover,
+.locale-changer select[name="locale-selector"]:hover {
+    border: 1px solid #646cff;
 }
 
 button:focus,
@@ -61,8 +63,14 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card {
-    padding: 2em;
+.date-selector input[type="date"],
+.locale-changer select[name="locale-selector"] {
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: #3b3b3bff;
+    font-family: inherit;
+    text-align: center;
+    transition: border-color 0.25s;
 }
 
 #app {
@@ -84,5 +92,10 @@ button:focus-visible {
 
     button {
         background-color: #f9f9f9;
+    }
+
+    .date-selector input[type="date"],
+    .locale-changer select[name="locale-selector"] {
+        background-color: #c8c8c8;
     }
 }
