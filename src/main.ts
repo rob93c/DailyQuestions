@@ -5,8 +5,11 @@ import App from './App.vue'
 import en_translations from './locales/en.json'
 import it_translations from './locales/it.json'
 
-const browsingLanguage = navigator.language.substring(0, 2);
-let locale = ['en', 'it'].includes(browsingLanguage) ? browsingLanguage : 'en';
+const supportedLocales = ['en', 'it'];
+let userLocales = [...new Set(navigator.languages
+    .map(lang => new Intl.Locale(lang).language)
+    .filter(locale => supportedLocales.includes(locale)))];
+let locale = userLocales.length > 0 ? userLocales[0] : 'en';
 
 const i18n = createI18n({
     legacy: false,
