@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import moment, { Moment } from 'moment';
 
 const theme = inject('theme');
 const { t, d, locale } = useI18n();
 
-let today = new Date();
-today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-const yesterday = new Date(new Date().setDate(today.getDate() - 1));
+const today = moment().startOf('day');
+const yesterday = today.clone().subtract(1, 'day');
 
-const getIntro = (date: Date) => {
-  if (date > today) {
-    return t('message.futureQuestion', { date: d(date, 'long') });
-  } else if (date < today) {
-    return t('message.pastQuestion', { date: d(date, 'long') });
+const getIntro = (moment: Moment) => {
+  if (moment.isAfter(today)) {
+    return t('message.futureQuestion', { date: d(moment.toDate(), 'long') });
+  } else if (moment.isBefore(today)) {
+    return t('message.pastQuestion', { date: d(moment.toDate(), 'long') });
   } else {
     return t('message.todayQuestion');
   }
@@ -21,45 +21,33 @@ const getIntro = (date: Date) => {
 
 let intro = ref(getIntro(today));
 
-const loadQuestion = (date: Date) => {
-  intro.value = getIntro(date);
+const loadQuestion = (moment: Moment) => {
+  intro.value = getIntro(moment);
 
-  return t(`message.questions.${date.getMonth()}.${date.getDate()}`);
+  return t(`message.questions.${moment.month()}.${moment.date()}`);
 };
 
-const timezoneOffset = today.getTimezoneOffset() * 60 * 1000;
-const formatDate = (date: Date) => {
-  return new Date(date.getTime() - timezoneOffset).toISOString().split('T')[0];
-}
-
 let dailyQuestion = ref(loadQuestion(today));
-let customDate = ref<string | null>(formatDate(today));
+let customDate = ref<string>(moment(today).format('YYYY-MM-DD'));
 let selectedDate = ref(today);
 
 const handleChange = () => {
-  if (customDate.value) {
-    const tempDate = new Date(customDate.value);
-    selectedDate.value = new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate());
-    dailyQuestion.value = loadQuestion(tempDate);
-    totalDays.value = getDaysInYear(tempDate)
-  }
+  selectedDate.value = moment(customDate.value).startOf('day');
+  dailyQuestion.value = loadQuestion(selectedDate.value);
+  totalDays.value = getDaysInYear(selectedDate.value)
 };
 
-const getDaysInYear = (date: Date) => {
-  return isLeapYear(date) ? 366 : 365;
-};
-
-const isLeapYear = (date: Date) => {
-  return new Date(date.getFullYear(), 1, 29).getMonth() === 1;
+const getDaysInYear = (moment: Moment) => {
+  return moment.isLeapYear() ? 366 : 365;
 };
 
 let totalDays = ref(getDaysInYear(today));
 
-const refreshContent = (date: Date) => {
-  dailyQuestion.value = loadQuestion(date);
-  totalDays.value = getDaysInYear(date);
-  selectedDate.value = date;
-  customDate.value = formatDate(date);
+const refreshContent = (moment: Moment) => {
+  dailyQuestion.value = loadQuestion(moment);
+  totalDays.value = getDaysInYear(moment);
+  selectedDate.value = moment;
+  customDate.value = moment.format('YYYY-MM-DD');
 };
 
 watch(locale, () => {
