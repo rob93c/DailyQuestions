@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {inject, ref, watch} from 'vue';
-import {useI18n} from 'vue-i18n';
+import { inject, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const theme = inject('theme');
-const {t, d, locale} = useI18n();
+const { t, d, locale } = useI18n();
 
 let today = new Date();
 today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -11,9 +11,9 @@ const yesterday = new Date(new Date().setDate(today.getDate() - 1));
 
 const getIntro = (date: Date) => {
   if (date > today) {
-    return t('message.futureQuestion', {date: d(date, 'long')});
+    return t('message.futureQuestion', { date: d(date, 'long') });
   } else if (date < today) {
-    return t('message.pastQuestion', {date: d(date, 'long')});
+    return t('message.pastQuestion', { date: d(date, 'long') });
   } else {
     return t('message.todayQuestion');
   }

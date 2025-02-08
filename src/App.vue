@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {provide, onMounted, ref} from 'vue';
+import { provide, onMounted, ref } from 'vue';
 import DailyQuestion from "./components/DailyQuestion.vue";
 
 const theme = ref('dark');
