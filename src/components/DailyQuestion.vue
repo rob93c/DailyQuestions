@@ -11,11 +11,11 @@ const yesterday = today.minus({ days: 1 });
 
 const getIntro = (dateTime: DateTime) => {
   if (dateTime > today) {
-    return t('message.futureQuestion', { date: d(dateTime.toJSDate(), 'long') });
+    return t('futureQuestion', { date: d(dateTime.toJSDate(), 'long') });
   } else if (dateTime < today) {
-    return t('message.pastQuestion', { date: d(dateTime.toJSDate(), 'long') });
+    return t('pastQuestion', { date: d(dateTime.toJSDate(), 'long') });
   } else {
-    return t('message.todayQuestion');
+    return t('todayQuestion');
   }
 };
 
@@ -24,7 +24,7 @@ let intro = ref(getIntro(today));
 const loadQuestion = (dateTime: DateTime) => {
   intro.value = getIntro(dateTime);
 
-  return t(`message.questions.${dateTime.month}.${dateTime.day}`);
+  return t(`questions.${dateTime.month}.${dateTime.day}`);
 };
 
 let dailyQuestion = ref(loadQuestion(today));
@@ -67,16 +67,16 @@ watch(locale, () => {
   <div class="form-container">
     <form @change="handleChange">
       <div class="date-selector">
-        <label for="date">{{ $t('message.specificDate') }}</label>
+        <label for="date">{{ $t('specificDate') }}</label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
 
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">{{ $t('message.yesterday') }}
+                @click="refreshContent(yesterday)">{{ $t('yesterday') }}
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(today)">{{ $t('message.today') }}
+                @click="refreshContent(today)">{{ $t('today') }}
         </button>
       </div>
     </form>

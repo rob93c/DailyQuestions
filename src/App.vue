@@ -37,7 +37,7 @@ const localeNames: Locales = {
   </div>
 
   <div class="locale-changer">
-    <label for="locale-selector">{{ $t('message.language') }}: </label>
+    <label for="locale-selector">{{ $t('language') }}: </label>
     <select v-model="$i18n.locale" id="locale-selector" name="locale-selector">
       <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
         {{ localeNames[locale] }}
