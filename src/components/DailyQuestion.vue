@@ -27,8 +27,13 @@ const loadQuestion = (date: Date) => {
   return t(`message.questions.${date.getMonth()}.${date.getDate()}`);
 };
 
+const timezoneOffset = today.getTimezoneOffset() * 60 * 1000;
+const formatDate = (date: Date) => {
+  return new Date(date.getTime() - timezoneOffset).toISOString().split('T')[0];
+}
+
 let dailyQuestion = ref(loadQuestion(today));
-let customDate = ref<string | null>(null);
+let customDate = ref<string | null>(formatDate(today));
 let selectedDate = ref(today);
 
 const handleChange = () => {
@@ -54,7 +59,7 @@ const refreshContent = (date: Date) => {
   dailyQuestion.value = loadQuestion(date);
   totalDays.value = getDaysInYear(date);
   selectedDate.value = date;
-  customDate.value = null
+  customDate.value = formatDate(date);
 };
 
 watch(locale, () => {
