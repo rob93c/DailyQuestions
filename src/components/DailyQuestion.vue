@@ -1,60 +1,53 @@
 <script setup lang="ts">
-import {inject, ref, watch} from 'vue';
-import {useI18n} from 'vue-i18n';
+import { inject, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { DateTime } from 'luxon';
 
 const theme = inject('theme');
-const {t, d, locale} = useI18n();
+const { t, d, locale } = useI18n();
 
-let today = new Date();
-today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-const yesterday = new Date(new Date().setDate(today.getDate() - 1));
+const today = DateTime.now().startOf('day');
+const yesterday = today.minus({ days: 1 });
 
-const getIntro = (date: Date) => {
-  if (date > today) {
-    return t('message.futureQuestion', {date: d(date, 'long')});
-  } else if (date < today) {
-    return t('message.pastQuestion', {date: d(date, 'long')});
+const getIntro = (dateTime: DateTime) => {
+  if (dateTime > today) {
+    return t('futureQuestion', { date: d(dateTime.toJSDate(), 'long') });
+  } else if (dateTime < today) {
+    return t('pastQuestion', { date: d(dateTime.toJSDate(), 'long') });
   } else {
-    return t('message.todayQuestion');
+    return t('todayQuestion');
   }
 };
 
 let intro = ref(getIntro(today));
 
-const loadQuestion = (date: Date) => {
-  intro.value = getIntro(date);
+const loadQuestion = (dateTime: DateTime) => {
+  intro.value = getIntro(dateTime);
 
-  return t(`message.questions.${date.getMonth()}.${date.getDate()}`);
+  return t(`questions.${dateTime.month}.${dateTime.day}`);
 };
 
 let dailyQuestion = ref(loadQuestion(today));
-let customDate = ref<string | null>(null);
-let selectedDate = ref(today);
+let customDate = ref<string>(today.toFormat('yyyy-MM-dd'));
+let selectedDate = ref<DateTime>(today);
 
 const handleChange = () => {
-  if (customDate.value) {
-    const tempDate = new Date(customDate.value);
-    selectedDate.value = new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate());
-    dailyQuestion.value = loadQuestion(tempDate);
-    totalDays.value = getDaysInYear(tempDate)
-  }
+  selectedDate.value = DateTime.fromISO(customDate.value).startOf('day');
+  dailyQuestion.value = loadQuestion(selectedDate.value);
+  totalDays.value = getDaysInYear(selectedDate.value)
 };
 
-const getDaysInYear = (date: Date) => {
-  return isLeapYear(date) ? 366 : 365;
-};
-
-const isLeapYear = (date: Date) => {
-  return new Date(date.getFullYear(), 1, 29).getMonth() === 1;
+const getDaysInYear = (dateTime: DateTime) => {
+  return dateTime.isInLeapYear ? 366 : 365;
 };
 
 let totalDays = ref(getDaysInYear(today));
 
-const refreshContent = (date: Date) => {
-  dailyQuestion.value = loadQuestion(date);
-  totalDays.value = getDaysInYear(date);
-  selectedDate.value = date;
-  customDate.value = null
+const refreshContent = (dateTime: DateTime) => {
+  dailyQuestion.value = loadQuestion(dateTime);
+  totalDays.value = getDaysInYear(dateTime);
+  selectedDate.value = dateTime;
+  customDate.value = dateTime.toFormat('yyyy-MM-dd');
 };
 
 watch(locale, () => {
@@ -74,16 +67,16 @@ watch(locale, () => {
   <div class="form-container">
     <form @change="handleChange">
       <div class="date-selector">
-        <label for="date">{{ $t('message.specificDate') }}</label>
+        <label for="date">{{ $t('specificDate') }}</label>
         <input type="date" id="date" v-model="customDate" required>
       </div>
 
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">{{ $t('message.yesterday') }}
+                @click="refreshContent(yesterday)">{{ $t('yesterday') }}
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(today)">{{ $t('message.today') }}
+                @click="refreshContent(today)">{{ $t('today') }}
         </button>
       </div>
     </form>

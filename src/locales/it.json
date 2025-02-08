@@ -7,7 +7,7 @@
     "todayQuestion": "Preparati a rispondere! La domanda di oggi è:",
     "language": "Lingua",
     "questions": {
-        "0": {
+        "1": {
             "1": "Qual è il tuo obiettivo principale dell’anno?",
             "2": "Per cosa sei più riconoscente?",
             "3": "Sei felice?",
@@ -40,7 +40,7 @@
             "30": "La mia casa (abitazione) è una CASA (in senso affettivo) perché ________.",
             "31": "Chi è l’ultima persona ad averti detto che ti ama o che ti vuole bene?"
         },
-        "1": {
+        "2": {
             "1": "Quale oggetto di arredamento in tuo possesso preferisci?",
             "2": "La bolletta/fattura più costosa che ho pagato lo scorso mese è stata ________.",
             "3": "Qual è l’ultima cosa per cui ti sei scusato?",
@@ -71,7 +71,7 @@
             "28": "Cosa ti mette ansia?",
             "29": "Cosa hai fatto per approfittare di questo giorno in più quest’anno?"
         },
-        "2": {
+        "3": {
             "1": "Qual è la cosa più simpatica che hai sentito oggi?",
             "2": "Se potessi avere un altro talento quale sarebbe?",
             "3": "Chi è il tuo migliore amico?",
@@ -104,7 +104,7 @@
             "30": "Oggi è stato un totale ________.",
             "31": "Cosa stai cercando?"
         },
-        "3": {
+        "4": {
             "1": "Hai fatto ridere qualcuno oggi? L’hai fatto intenzionalmente?",
             "2": "Cosa ti rende triste?",
             "3": "Oggi è stata una giornata ordinaria? Perché? Perché no?",
@@ -136,7 +136,7 @@
             "29": "Dove vuoi andare prossimamente?",
             "30": "Cosa hai letto oggi?"
         },
-        "4": {
+        "5": {
             "1": "Chi è stato gentile con te oggi?",
             "2": "Chi è l’ultima persona con cui hai parlato?",
             "3": "Cosa ti fa sentire vivo?",
@@ -169,7 +169,7 @@
             "30": "Quali sono i tuoi hobby?",
             "31": "Qual è stato il momento più “down” oggi?"
         },
-        "5": {
+        "6": {
             "1": "Qual è una piccola cosa che puoi fare per prenderti cura di te stesso?",
             "2": "Quanto è stato vicino alla perfezione oggi?",
             "3": "Quando è stata l’ultima volta che hai cantato a squarciagola?",
@@ -201,7 +201,7 @@
             "29": "Oggi ero ________.",
             "30": "L’ultima cosa che ho acquistato per me stesso è stata ________."
         },
-        "6": {
+        "7": {
             "1": "Eri solo oggi?",
             "2": "Chi è stata l’ultima persona che hai visto oggi?",
             "3": "Cosa hai bisogno di abbandonare?",
@@ -234,7 +234,7 @@
             "30": "Cosa ti ha motivato oggi?",
             "31": "Chi è il tuo amico più folle?"
         },
-        "7": {
+        "8": {
             "1": "Cosa hai mangiato a pranzo oggi?",
             "2": "Cosa hai abbandonato?",
             "3": "Cosa vuoi terminare domani?",
@@ -267,7 +267,7 @@
             "30": "Quale programma ti rifiuti di guardare?",
             "31": "Se potessi dipingere un quadro della tua giornata, cosa rappresenterebbe?"
         },
-        "8": {
+        "9": {
             "1": "Quale decisione non vorresti mai dover prendere?",
             "2": "Cosa ti incuriosisce?",
             "3": "Qual è l’ultima cosa che hai imparato?",
@@ -299,7 +299,7 @@
             "29": "Hai infranto la legge? Come?",
             "30": "Ti sei annoiato oggi?"
         },
-        "9": {
+        "10": {
             "1": "Chi è l’ultima persona con cui hai passato del tempo piacevolmente?",
             "2": "Chi hai abbracciato oggi?",
             "3": "Descrivi la tua giornata in una parola.",
@@ -332,7 +332,7 @@
             "30": "Cosa ti sta ostacolando?",
             "31": "Qual è il titolo più interessante letto sul giornale di oggi?"
         },
-        "10": {
+        "11": {
             "1": "Quale decisione sei soddisfatto di aver preso?",
             "2": "Dai un buon consiglio.",
             "3": "Da cosa era occupata la tua mente oggi?",
@@ -364,7 +364,7 @@
             "29": "Quale oggetto possiedi che ti ricorda un bel momento del passato?",
             "30": "Cosa hai dovuto fare oggi?"
         },
-        "11": {
+        "12": {
             "1": "Se il tempo non fosse un problema, cosa faresti?",
             "2": "Vorrei davvero ________.",
             "3": "C’è stato un momento in cui ti sei sentito particolarmente connesso con qualcuno?",
