@@ -7,7 +7,7 @@
     "todayQuestion": "Get ready! Today's question is:",
     "language": "Language",
     "questions": {
-        "0": {
+        "1": {
             "1": "What is your main goal for the year?",
             "2": "What are you most grateful for?",
             "3": "Are you happy?",
@@ -40,7 +40,7 @@
             "30": "My house (home) is a HOME (in an emotional sense) because ________.",
             "31": "Who is the last person to tell you they love or care about you?"
         },
-        "1": {
+        "2": {
             "1": "What is your favorite piece of furniture you own?",
             "2": "The most expensive bill I paid last month was ________.",
             "3": "What is the last thing you apologized for?",
@@ -71,7 +71,7 @@
             "28": "What makes you anxious?",
             "29": "What did you do to take advantage of this extra day this year?"
         },
-        "2": {
+        "3": {
             "1": "What is the funniest thing you heard today?",
             "2": "If you could have another talent, what would it be?",
             "3": "Who is your best friend?",
@@ -104,7 +104,7 @@
             "30": "Today was a total ________.",
             "31": "What are you looking for?"
         },
-        "3": {
+        "4": {
             "1": "Did you make anyone laugh today? Did you do it intentionally?",
             "2": "What makes you sad?",
             "3": "Was today an ordinary day? Why? Why not?",
@@ -136,7 +136,7 @@
             "29": "Where do you want to go next?",
             "30": "What did you read today?"
         },
-        "4": {
+        "5": {
             "1": "Who was kind to you today?",
             "2": "Who is the last person you talked to?",
             "3": "What makes you feel alive?",
@@ -169,7 +169,7 @@
             "30": "What are your hobbies?",
             "31": "What was the most “down” moment today?"
         },
-        "5": {
+        "6": {
             "1": "What is one small thing you can do to take care of yourself?",
             "2": "How close to perfect was today?",
             "3": "When was the last time you sang at the top of your lungs?",
@@ -201,7 +201,7 @@
             "29": "Today I was ________.",
             "30": "The last thing I bought for myself was ________."
         },
-        "6": {
+        "7": {
             "1": "Were you alone today?",
             "2": "Who was the last person you saw today?",
             "3": "What do you need to let go of?",
@@ -234,7 +234,7 @@
             "30": "What motivated you today?",
             "31": "Who is your craziest friend?"
         },
-        "7": {
+        "8": {
             "1": "What did you eat for lunch today?",
             "2": "What did you give up?",
             "3": "What do you want to finish tomorrow?",
@@ -267,7 +267,7 @@
             "30": "What show do you refuse to watch?",
             "31": "If you could paint a picture of your day, what would it depict?"
         },
-        "8": {
+        "9": {
             "1": "What decision would you never want to have to make?",
             "2": "What are you curious about?",
             "3": "What is the last thing you learned?",
@@ -299,7 +299,7 @@
             "29": "Did you break the law? How?",
             "30": "Were you bored today?"
         },
-        "9": {
+        "10": {
             "1": "Who is the last person you had a pleasant time with?",
             "2": "Who did you hug today?",
             "3": "Describe your day in one word.",
@@ -332,7 +332,7 @@
             "30": "What is hindering you?",
             "31": "What is the most interesting headline you read in today's newspaper?"
         },
-        "10": {
+        "11": {
             "1": "What decision are you satisfied with making?",
             "2": "Give some good advice.",
             "3": "What occupied your mind today?",
@@ -364,7 +364,7 @@
             "29": "What object do you own that reminds you of a beautiful moment from the past?",
             "30": "What did you have to do today?"
         },
-        "11": {
+        "12": {
             "1": "If time were not an issue, what would you do?",
             "2": "I really wish ________.",
             "3": "Was there a moment when you felt particularly connected with someone?",
