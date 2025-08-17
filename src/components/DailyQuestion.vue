@@ -7,7 +7,8 @@ const theme = inject('theme');
 const { t, d, locale } = useI18n();
 
 const today = DateTime.now().startOf('day');
-const yesterday = today.minus({ days: 1 });
+let previousDay = ref<DateTime>(today.minus({ days: 1 }));
+let nextDay = ref<DateTime>(today.plus({ days: 1 }));
 
 const getIntro = (dateTime: DateTime) => {
   if (dateTime > today) {
@@ -33,6 +34,8 @@ let selectedDate = ref<DateTime>(today);
 
 const handleChange = () => {
   selectedDate.value = DateTime.fromISO(customDate.value).startOf('day');
+  previousDay.value = selectedDate.value.minus({ days: 1 });
+  nextDay.value = selectedDate.value.plus({ days: 1 });
   dailyQuestion.value = loadQuestion(selectedDate.value);
   totalDays.value = getDaysInYear(selectedDate.value)
 };
@@ -47,6 +50,8 @@ const refreshContent = (dateTime: DateTime) => {
   dailyQuestion.value = loadQuestion(dateTime);
   totalDays.value = getDaysInYear(dateTime);
   selectedDate.value = dateTime;
+  previousDay.value = selectedDate.value.minus({ days: 1 });
+  nextDay.value = selectedDate.value.plus({ days: 1 });
   customDate.value = dateTime.toFormat('yyyy-MM-dd');
 };
 
@@ -73,10 +78,13 @@ watch(locale, () => {
 
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">{{ $t('yesterday') }}
+                @click="refreshContent(previousDay)"><
         </button>
         <button :class="['btn', theme]" type="button"
                 @click="refreshContent(today)">{{ $t('today') }}
+        </button>
+        <button :class="['btn', theme]" type="button"
+                @click="refreshContent(nextDay)">>
         </button>
       </div>
     </form>

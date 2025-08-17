@@ -1,6 +1,5 @@
 {
     "today": "Oggi",
-    "yesterday": "Ieri",
     "specificDate": "Scegli un giorno specifico: ",
     "futureQuestion": "Impaziente? Stai sbirciando la domanda del {date}:",
     "pastQuestion": "La domanda del {date} era:",

@@ -1,6 +1,5 @@
 {
     "today": "Today",
-    "yesterday": "Yesterday",
     "specificDate": "Choose a specific date: ",
     "futureQuestion": "Can't wait? You are peeking at the question for {date}:",
     "pastQuestion": "The question for {date} was:",
