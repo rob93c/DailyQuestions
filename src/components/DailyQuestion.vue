@@ -74,12 +74,16 @@ watch(locale, () => {
 
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
+                :aria-label="$t('previousDay')"
+                :title="$t('previousDay')"
                 @click="refreshContent(previousDay)"><
         </button>
         <button :class="['btn', theme]" type="button"
                 @click="refreshContent(today)">{{ $t('today') }}
         </button>
         <button :class="['btn', theme]" type="button"
+                :aria-label="$t('nextDay')"
+                :title="$t('nextDay')"
                 @click="refreshContent(nextDay)">>
         </button>
       </div>
