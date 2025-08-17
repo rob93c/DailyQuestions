@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, ref, watch } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { DateTime } from 'luxon';
 
@@ -7,7 +7,6 @@ const theme = inject('theme');
 const { t, d, locale } = useI18n();
 
 const today = DateTime.now().startOf('day');
-const yesterday = today.minus({ days: 1 });
 
 const getIntro = (dateTime: DateTime) => {
   if (dateTime > today) {
@@ -30,6 +29,8 @@ const loadQuestion = (dateTime: DateTime) => {
 let dailyQuestion = ref(loadQuestion(today));
 let customDate = ref<string>(today.toFormat('yyyy-MM-dd'));
 let selectedDate = ref<DateTime>(today);
+const previousDay = computed(() => selectedDate.value.minus({ days: 1 }));
+const nextDay = computed(() => selectedDate.value.plus({ days: 1 }));
 
 const handleChange = () => {
   selectedDate.value = DateTime.fromISO(customDate.value).startOf('day');
@@ -73,10 +74,17 @@ watch(locale, () => {
 
       <div class="button-row">
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(yesterday)">{{ $t('yesterday') }}
+                :aria-label="$t('previousDay')"
+                :title="$t('previousDay')"
+                @click="refreshContent(previousDay)"><
         </button>
         <button :class="['btn', theme]" type="button"
                 @click="refreshContent(today)">{{ $t('today') }}
+        </button>
+        <button :class="['btn', theme]" type="button"
+                :aria-label="$t('nextDay')"
+                :title="$t('nextDay')"
+                @click="refreshContent(nextDay)">>
         </button>
       </div>
     </form>

@@ -1,7 +1,8 @@
 {
     "today": "Today",
-    "yesterday": "Yesterday",
     "specificDate": "Choose a specific date: ",
+    "previousDay": "Go to the previous day",
+    "nextDay": "Go to the next day",
     "futureQuestion": "Can't wait? You are peeking at the question for {date}:",
     "pastQuestion": "The question for {date} was:",
     "todayQuestion": "Get ready! Today's question is:",
