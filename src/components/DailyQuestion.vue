@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, ref, watch } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { DateTime } from 'luxon';
 
@@ -7,8 +7,6 @@ const theme = inject('theme');
 const { t, d, locale } = useI18n();
 
 const today = DateTime.now().startOf('day');
-let previousDay = ref<DateTime>(today.minus({ days: 1 }));
-let nextDay = ref<DateTime>(today.plus({ days: 1 }));
 
 const getIntro = (dateTime: DateTime) => {
   if (dateTime > today) {
@@ -31,11 +29,11 @@ const loadQuestion = (dateTime: DateTime) => {
 let dailyQuestion = ref(loadQuestion(today));
 let customDate = ref<string>(today.toFormat('yyyy-MM-dd'));
 let selectedDate = ref<DateTime>(today);
+const previousDay = computed(() => selectedDate.value.minus({ days: 1 }));
+const nextDay = computed(() => selectedDate.value.plus({ days: 1 }));
 
 const handleChange = () => {
   selectedDate.value = DateTime.fromISO(customDate.value).startOf('day');
-  previousDay.value = selectedDate.value.minus({ days: 1 });
-  nextDay.value = selectedDate.value.plus({ days: 1 });
   dailyQuestion.value = loadQuestion(selectedDate.value);
   totalDays.value = getDaysInYear(selectedDate.value)
 };
@@ -50,8 +48,6 @@ const refreshContent = (dateTime: DateTime) => {
   dailyQuestion.value = loadQuestion(dateTime);
   totalDays.value = getDaysInYear(dateTime);
   selectedDate.value = dateTime;
-  previousDay.value = selectedDate.value.minus({ days: 1 });
-  nextDay.value = selectedDate.value.plus({ days: 1 });
   customDate.value = dateTime.toFormat('yyyy-MM-dd');
 };
 
