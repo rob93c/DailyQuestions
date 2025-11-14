@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "engines": {
-    "node": "22"
+    "node": "24"
   },
   "dependencies": {
     "luxon": "^3.5.0",
