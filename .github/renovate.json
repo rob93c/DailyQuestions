@@ -10,9 +10,9 @@
     "packageRules": [
         {
             "matchUpdateTypes": [
-                "minor"
+                "major"
             ],
-            "automerge": true,
+            "automerge": false,
             "minimumReleaseAge": "1 week",
             "matchPackageNames": [
                 "*"
