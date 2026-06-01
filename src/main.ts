@@ -21,12 +21,12 @@ const i18n = createI18n({
   datetimeFormats: {
     en: {
       long: {
-        month: 'long', day: 'numeric'
+        month: 'long', day: 'numeric', weekday: 'long'
       }
     },
     it: {
       long: {
-        month: 'long', day: 'numeric'
+        month: 'long', day: 'numeric', weekday: 'long'
       }
     }
   }
