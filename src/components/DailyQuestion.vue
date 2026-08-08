@@ -58,10 +58,9 @@ watch(locale, () => {
 let lastKnownToday = ref(getToday());
 
 const onVisible = () => {
-  const today = getToday();
-
-  if (!lastKnownToday.value.equals(today)) {
-    if (document.visibilityState === 'visible' && selectedDate.value.equals(lastKnownToday.value)) {
+  if (document.visibilityState === 'visible') {
+    const today = getToday();
+    if (!lastKnownToday.value.hasSame(today, 'day') && selectedDate.value.hasSame(lastKnownToday.value, 'day')) {
       refreshContent(today);
     }
 
