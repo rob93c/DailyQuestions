@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { computed, inject, ref, watch } from 'vue';
+import { computed, inject, ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { DateTime } from 'luxon';
 
 const theme = inject('theme');
 const { t, d, locale } = useI18n();
 
-const today = DateTime.now().startOf('day');
+const getToday = () => DateTime.now().startOf('day');
 
 const getIntro = (dateTime: DateTime) => {
+  const today = getToday();
   if (dateTime > today) {
     return t('futureQuestion', { date: d(dateTime.toJSDate(), 'long') });
   } else if (dateTime < today) {
@@ -18,31 +19,30 @@ const getIntro = (dateTime: DateTime) => {
   }
 };
 
-let intro = ref(getIntro(today));
+let intro = ref(getIntro(getToday()));
 
 const loadQuestion = (dateTime: DateTime) => {
   intro.value = getIntro(dateTime);
-
   return t(`questions.${dateTime.month}.${dateTime.day}`);
 };
 
-let dailyQuestion = ref(loadQuestion(today));
-let customDate = ref<string>(today.toFormat('yyyy-MM-dd'));
-let selectedDate = ref<DateTime>(today);
+let dailyQuestion = ref(loadQuestion(getToday()));
+let customDate = ref<string>(getToday().toFormat('yyyy-MM-dd'));
+let selectedDate = ref<DateTime>(getToday());
 const previousDay = computed(() => selectedDate.value.minus({ days: 1 }));
 const nextDay = computed(() => selectedDate.value.plus({ days: 1 }));
 
 const handleChange = () => {
   selectedDate.value = DateTime.fromISO(customDate.value).startOf('day');
   dailyQuestion.value = loadQuestion(selectedDate.value);
-  totalDays.value = getDaysInYear(selectedDate.value)
+  totalDays.value = getDaysInYear(selectedDate.value);
 };
 
 const getDaysInYear = (dateTime: DateTime) => {
   return dateTime.isInLeapYear ? 366 : 365;
 };
 
-let totalDays = ref(getDaysInYear(today));
+let totalDays = ref(getDaysInYear(getToday()));
 
 const refreshContent = (dateTime: DateTime) => {
   dailyQuestion.value = loadQuestion(dateTime);
@@ -53,6 +53,26 @@ const refreshContent = (dateTime: DateTime) => {
 
 watch(locale, () => {
   dailyQuestion.value = loadQuestion(selectedDate.value);
+});
+
+let lastKnownToday = ref(getToday());
+
+const onVisible = () => {
+  if (document.visibilityState === 'visible') {
+    const today = getToday();
+    if (!lastKnownToday.value.equals(today) && selectedDate.value.equals(lastKnownToday.value)) {
+      refreshContent(today);
+    }
+    lastKnownToday.value = today;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', onVisible);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('visibilitychange', onVisible);
 });
 </script>
 
@@ -79,7 +99,7 @@ watch(locale, () => {
                 @click="refreshContent(previousDay)"><
         </button>
         <button :class="['btn', theme]" type="button"
-                @click="refreshContent(today)">{{ $t('today') }}
+                @click="refreshContent(getToday())">{{ $t('today') }}
         </button>
         <button :class="['btn', theme]" type="button"
                 :aria-label="$t('nextDay')"
