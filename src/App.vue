@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { provide, onMounted, ref } from 'vue';
+import { onMounted, provide, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useStorage } from '@vueuse/core';
 import DailyQuestion from "./components/DailyQuestion.vue";
+
+const { locale } = useI18n();
+const storedLocale = useStorage('preferred-locale', locale.value);
+
+watch(locale, (newLocale) => {
+  storedLocale.value = newLocale;
+});
 
 const theme = ref('dark');
 
