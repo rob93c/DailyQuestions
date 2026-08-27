@@ -6,7 +6,11 @@ import en_translations from './locales/en.json'
 import it_translations from './locales/it.json'
 
 const supportedLocales = ['en', 'it'];
-let locale = navigator.languages
+const savedLocale = localStorage.getItem('preferred-locale');
+
+let locale = (savedLocale && supportedLocales.includes(savedLocale))
+  ? savedLocale
+  : navigator.languages
   .map(lang => new Intl.Locale(lang).language)
   .find(locale => supportedLocales.includes(locale)) || 'en';
 
