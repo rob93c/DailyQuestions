@@ -20,7 +20,7 @@
 	}
 	log_append service "daily-questions"
 	log_append event "http.request.completed"
-	log_append request_id {http.request.header.X-Request-Id}
+	log_append request_id {http.request.header.X-Railway-Request-Id}
 
 	respond /health 200
 
