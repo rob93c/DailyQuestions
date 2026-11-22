@@ -1,27 +1,34 @@
 {
-    admin off
-    persist_config off
-    auto_https off
-    log {
-        format json
-    }
-    servers {
-        trusted_proxies static private_ranges
-    }
+	admin off
+	persist_config off
+	auto_https off
+	log {
+		format json
+		level WARN
+	}
+	servers {
+		trusted_proxies static private_ranges
+	}
 }
 
 :{$PORT} {
-    log {
-        format json
-    }
+	log {
+		format filter {
+			wrap json
+			request>headers delete
+		}
+	}
+	log_append service "daily-questions"
+	log_append event "http.request.completed"
+	log_append request_id {http.request.header.X-Railway-Request-Id}
 
-    respond /health 200
+	respond /health 200
 
-    root * dist
+	root * dist
 
-    encode gzip
+	encode gzip
 
-    file_server
+	file_server
 
-    try_files {path} /index.html
+	try_files {path} /index.html
 }
