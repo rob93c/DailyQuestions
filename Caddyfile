@@ -21,6 +21,7 @@
 	log_append service "daily-questions"
 	log_append event "http.request.completed"
 	log_append request_id {http.request.header.X-Railway-Request-Id}
+	log_append device_user_agent {http.request.header.User-Agent}
 
 	respond /health 200
 
